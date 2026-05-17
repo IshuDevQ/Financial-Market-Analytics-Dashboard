@@ -34,6 +34,36 @@ def load_data():
 
     df["date"] = pd.to_datetime(df["date"])
 
+    # Backward compatibility: if the deployed CSV/database was generated before
+    # anomaly detection was added, create the required columns inside the app.
+    if "return_z_score" not in df.columns or "is_anomaly" not in df.columns:
+        df = df.sort_values(["ticker", "date"]).copy()
+
+        frames = []
+        for ticker, group in df.groupby("ticker"):
+            group = group.copy()
+
+            if "daily_return" not in group.columns:
+                group["daily_return"] = group["close"].pct_change()
+
+            mean_return = group["daily_return"].mean()
+            std_return = group["daily_return"].std()
+
+            if pd.notna(std_return) and std_return != 0:
+                group["return_z_score"] = (group["daily_return"] - mean_return) / std_return
+            else:
+                group["return_z_score"] = 0
+
+            group["is_anomaly"] = np.where(
+                group["return_z_score"].abs() > 2.5,
+                "Anomaly",
+                "Normal"
+            )
+
+            frames.append(group)
+
+        df = pd.concat(frames, ignore_index=True)
+
     return df
 
 
