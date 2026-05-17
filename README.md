@@ -1,8 +1,10 @@
 
 
-# Financial Market Analytics Dashboard
+# ML-Powered Financial Market Analytics Dashboard
 
-An end-to-end financial analytics project that extracts historical stock market data, processes it using Python, stores structured data in SQLite, and presents interactive insights through a Streamlit dashboard.
+An end-to-end ML-powered financial analytics project that extracts historical stock market data, processes it using Python, stores structured data in SQLite, and presents interactive insights through a Streamlit dashboard.
+
+The dashboard includes financial metric analysis, statistical anomaly detection, machine learning-based short-term forecasting, and automated financial insights.
 
 ## Live App
 
@@ -14,7 +16,7 @@ https://financial-market-analytics-dashboard-xvibf3zdfcuacc3aetryf2.streamlit.ap
 
 ## Project Objective
 
-The objective of this project is to analyze stock market performance using business-friendly financial metrics such as returns, volatility, moving averages, cumulative growth, and trend signals.
+The objective of this project is to analyze stock market performance using business-friendly financial metrics such as returns, volatility, moving averages, cumulative growth, trend signals, anomaly detection, and short-term forecasting.
 
 This project demonstrates practical skills in:
 
@@ -22,6 +24,8 @@ This project demonstrates practical skills in:
 - Python-based ETL pipeline development
 - Data cleaning and transformation
 - SQL database storage
+- Machine learning-based forecasting
+- Statistical anomaly detection
 - Interactive dashboard development
 - Business insight generation
 
@@ -36,6 +40,7 @@ This project demonstrates practical skills in:
 - Streamlit
 - Plotly
 - Matplotlib
+- scikit-learn
 
 ## Dataset
 
@@ -76,7 +81,11 @@ Data cleaning using Pandas
    ↓
 Financial metric calculation
    ↓
+Anomaly detection
+   ↓
 SQLite database storage
+   ↓
+ML-based forecasting and automated insights
    ↓
 Interactive Streamlit dashboard
 ```
@@ -109,14 +118,39 @@ The following financial metrics are calculated:
 - Annualized volatility
 - Bullish/Bearish trend signal
 
-### 4. SQL Storage
+### 4. Statistical Anomaly Detection
+
+The dashboard detects unusual stock return movements using z-score based anomaly detection.
+
+A daily return is marked as an anomaly when:
+
+```text
+|z-score| > 2.5
+```
+
+This helps identify unusual market movements for selected stocks.
+
+### 5. ML-Based KPI Forecasting
+
+The dashboard uses a Linear Regression model to forecast short-term closing prices.
+
+The model uses time as the independent variable and closing price as the target variable.
+
+Forecasting is available for selected stocks over short horizons such as:
+
+- 7 days
+- 14 days
+- 21 days
+- 30 days
+
+### 6. SQL Storage
 
 The cleaned and processed datasets are loaded into a SQLite database with tables such as:
 
 - `stock_prices`
 - `stock_metrics`
 
-### 5. Streamlit Dashboard
+### 7. Streamlit Dashboard
 
 The dashboard provides interactive filters and visualizations for:
 
@@ -126,6 +160,9 @@ The dashboard provides interactive filters and visualizations for:
 - Bullish/Bearish signal distribution
 - Risk-return comparison
 - Volatility comparison
+- Statistical anomaly detection
+- ML-based closing price forecasting
+- Automated financial insights
 - Stock-level summary table
 
 ## Dashboard Sections
@@ -145,6 +182,18 @@ Compares stocks based on average return and annualized volatility.
 ### Stock Comparison Table
 
 Summarizes latest close price, average daily return, cumulative return, volatility, and average trading volume.
+
+### Statistical Anomaly Detection
+
+Detects unusual return movements using z-score based anomaly detection and displays anomaly counts, anomaly charts, and anomaly tables.
+
+### ML-Based KPI Forecasting
+
+Uses Linear Regression to forecast short-term closing price trends for selected stocks.
+
+### Automated Financial Insights
+
+Generates rule-based business insights using financial metrics such as cumulative return, volatility, anomaly count, and moving-average trend signals.
 
 ## Folder Structure
 
@@ -217,9 +266,9 @@ streamlit run dashboard/app.py
 
 ## Deployment
 
-This app can be deployed using Streamlit Community Cloud.
+This app is deployed using Streamlit Community Cloud.
 
-Use the following deployment settings:
+Deployment settings:
 
 ```text
 Repository: IshuDevQ/Financial-Market-Analytics-Dashboard
@@ -243,16 +292,41 @@ This project helps users compare selected stocks using:
 - Volatility-based risk analysis
 - Risk-return positioning
 - Bullish and bearish signal phases
+- Anomaly frequency
+- Short-term forecasted closing price movement
 
+## Machine Learning and Analytics Methods Used
+
+### Linear Regression Forecasting
+
+A Linear Regression model is used to forecast short-term closing prices based on historical price trends.
+
+### Z-Score Anomaly Detection
+
+Daily returns are standardized using z-scores. Large deviations from normal return behavior are flagged as anomalies.
+
+### Rule-Based Automated Insights
+
+Automated insights are generated using calculated financial indicators such as:
+
+- Cumulative return
+- Annualized volatility
+- Trend signal
+- Anomaly count
+
+## Disclaimer
+
+This dashboard is built for educational and exploratory financial analytics purposes only. It does not provide investment advice or trading recommendations.
 
 ## Future Improvements
 
 - Add portfolio weight allocation
 - Add Sharpe ratio and Value at Risk
 - Add sector-wise stock comparison
-- Add automated daily data refresh
+- Add advanced forecasting models
+- Add model performance evaluation metrics
 - Add downloadable Excel reports
-- Add forecasting models for trend analysis
+- Add automated daily data refresh
 
 ## Author
 
