@@ -6,10 +6,10 @@ An end-to-end financial analytics project that extracts historical stock market 
 
 ## Live App
 
-Add your deployed Streamlit app link here after deployment:
+The deployed Streamlit dashboard is available here:
 
 ```text
-https://your-app-name.streamlit.app
+https://financial-market-analytics-dashboard-xvibf3zdfcuacc3aetryf2.streamlit.app/
 ```
 
 ## Project Objective
@@ -244,14 +244,6 @@ This project helps users compare selected stocks using:
 - Risk-return positioning
 - Bullish and bearish signal phases
 
-## Resume Description
-
-**Financial Market Analytics Dashboard | Python, SQL, Streamlit, Pandas**
-
-- Built an end-to-end financial analytics pipeline using Python, Pandas, yfinance, and SQL to collect, clean, store, and analyze historical equity market data.
-- Developed an interactive Streamlit dashboard to visualize stock price trends, cumulative returns, moving averages, volatility, and trend signals.
-- Calculated financial metrics including daily returns, cumulative returns, 20-day and 50-day moving averages, rolling volatility, and annualized volatility.
-- Designed risk-return comparison visuals to evaluate selected equities based on average returns and volatility.
 
 ## Future Improvements
 
